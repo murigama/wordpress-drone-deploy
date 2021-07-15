@@ -46,7 +46,8 @@
       image: joshdvir/drone-ecs-deploy
       depends_on:
         - publish
-      cluster: wordpress-drone-deploy
+      settings:
+        cluster: wordpress-drone-deploy
       service: wordpress-drone-deploy
       image_name: 990444934042.dkr.ecr.us-west-2.amazonaws.com/wordpress-drone-deploy:latest
       aws_region: us-west-2
