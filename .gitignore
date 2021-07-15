@@ -1,0 +1,9 @@
+#ignore dotfiles
+.env
+.htaccess
+composer.json
+composer.lock
+
+# ignore wp files and folders
+/wp-config.php
+/wp-content/uploads
