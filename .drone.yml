@@ -75,7 +75,8 @@
         image_name: 990444934042.dkr.ecr.us-west-2.amazonaws.com/wordpress-drone-deploy
         image_tag: latest
         port_mappings:
-          - 80 9000 443
+          - 80
+          - 443
         memory: 128
 
   trigger:
