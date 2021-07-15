@@ -42,23 +42,38 @@
       environment:
         FORCE_NEW_DEPLOYMENT: true
 
+    # - name: deploy
+    #   image: joshdvir/drone-ecs-deploy
+    #   depends_on:
+    #     - publish
+    #   settings:
+    #     cluster: wordpress-drone-deploy
+    #     service: wordpress-drone-deploy
+    #     image_name: 990444934042.dkr.ecr.us-west-2.amazonaws.com/wordpress-drone-deploy:latest
+    #     aws_region: us-west-2
+    #     timeout: "1200"
+    #     max: "200"
+    #     min: "100"
+    #     AWS_ACCESS_KEY_ID:
+    #       from_secret: access_key
+    #     AWS_SECRET_ACCESS_KEY:
+    #       from_secret: secret_key
+    #     task_definition: {"taskDefinition":{"requiresCompatibilities": ["FARGATE", "EC2"], "networkMode":"awsvpc"}}
+    
     - name: deploy
-      image: joshdvir/drone-ecs-deploy
-      depends_on:
-        - publish
-      settings:
-        cluster: wordpress-drone-deploy
-        service: wordpress-drone-deploy
-        image_name: 990444934042.dkr.ecr.us-west-2.amazonaws.com/wordpress-drone-deploy:latest
-        aws_region: us-west-2
-        timeout: "1200"
-        max: "200"
-        min: "100"
-        AWS_ACCESS_KEY_ID:
-          from_secret: access_key
-        AWS_SECRET_ACCESS_KEY:
-          from_secret: secret_key
-        task_definition: {"taskDefinition":{"requiresCompatibilities": ["FARGATE", "EC2"], "networkMode":"awsvpc"}}
+      image: pelotech/drone-ecs
+      access_key: 
+        from_secret: access_key
+      secret_key:
+        from_secret: secret_key
+      service: wordpress-drone-deploy
+      region: us-west-2
+      family: wordpress-drone-deploy
+      image_name: 990444934042.dkr.ecr.us-west-2.amazonaws.com/wordpress-drone-deploy
+      image_tag: latest
+      port_mappings:
+        - 80 9000 443
+      memory: 128
 
   trigger:
     branch:
