@@ -48,17 +48,17 @@
         - publish
       settings:
         cluster: wordpress-drone-deploy
-      service: wordpress-drone-deploy
-      image_name: 990444934042.dkr.ecr.us-west-2.amazonaws.com/wordpress-drone-deploy:latest
-      aws_region: us-west-2
-      timeout: "1200"
-      max: "200"
-      min: "100"
+        service: wordpress-drone-deploy
+        image_name: 990444934042.dkr.ecr.us-west-2.amazonaws.com/wordpress-drone-deploy:latest
+        aws_region: us-west-2
+        timeout: "1200"
+        max: "200"
+        min: "100"
+        task_definition: {"taskDefinition":{"requiresCompatibilities": ["FARGATE", "EC2"], "networkMode":"awsvpc"}}
       aws_access_key_id:
         from_secret: access_key
       aws_secret_access_key:
         from_secret: secret_key
-      task_definition: {"taskDefinition":{"requiresCompatibilities": ["FARGATE", "EC2"], "networkMode":"awsvpc"}}
 
   trigger:
     branch:
