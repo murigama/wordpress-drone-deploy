@@ -64,18 +64,19 @@
       image: pelotech/drone-ecs
       depends_on:
         - publish
-      access_key: 
-        from_secret: access_key
-      secret_key:
-        from_secret: secret_key
-      service: wordpress-drone-deploy
-      region: us-west-2
-      family: wordpress-drone-deploy
-      image_name: 990444934042.dkr.ecr.us-west-2.amazonaws.com/wordpress-drone-deploy
-      image_tag: latest
-      port_mappings:
-        - 80 9000 443
-      memory: 128
+      settings:
+        access_key: 
+          from_secret: access_key
+        secret_key:
+          from_secret: secret_key
+        service: wordpress-drone-deploy
+        region: us-west-2
+        family: wordpress-drone-deploy
+        image_name: 990444934042.dkr.ecr.us-west-2.amazonaws.com/wordpress-drone-deploy
+        image_tag: latest
+        port_mappings:
+          - 80 9000 443
+        memory: 128
 
   trigger:
     branch:
