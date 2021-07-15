@@ -28,6 +28,7 @@
       depends_on:
         - build-site
       settings:
+        insecure: true
         access_key:
           from_secret: access_key
         secret_key:
@@ -36,7 +37,7 @@
         repo: wordpress-drone-deploy
         tags:
           - latest
-        registry: 990444934042.dkr.ecr.us-east-2.amazonaws.com
+        registry: 990444934042.dkr.ecr.us-west-2.amazonaws.com
       environment:
         FORCE_NEW_DEPLOYMENT: true
 
@@ -47,7 +48,7 @@
       settings:
         cluster: wordpress-drone-deploy
         service: wordpress-drone-deploy
-        image_name: 990444934042.dkr.ecr.us-east-2.amazonaws.com/wordpress-drone-deploy:latest
+        image_name: 990444934042.dkr.ecr.us-west-2.amazonaws.com/wordpress-drone-deploy:latest
         aws_region: us-west-2
         timeout: "1200"
         max: "200"
