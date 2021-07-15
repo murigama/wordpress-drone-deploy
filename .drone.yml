@@ -28,6 +28,7 @@
       depends_on:
         - build-site
       settings:
+        create_repository: true
         insecure: true
         access_key:
           from_secret: access_key
