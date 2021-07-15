@@ -54,9 +54,9 @@
         timeout: "1200"
         max: "200"
         min: "100"
-        aws_access_key_id:
+        AWS_ACCESS_KEY_ID:
           from_secret: access_key
-        aws_secret_access_key:
+        AWS_SECRET_ACCESS_KEY:
           from_secret: secret_key
         task_definition: {"taskDefinition":{"requiresCompatibilities": ["FARGATE", "EC2"], "networkMode":"awsvpc"}}
 
